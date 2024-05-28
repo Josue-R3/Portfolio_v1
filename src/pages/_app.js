@@ -1,4 +1,4 @@
-import "../../styles/globals.css";
+import '../../public/styles/globals.css'
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 
