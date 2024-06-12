@@ -1,6 +1,7 @@
-import Header from '../components/layout/header'
-import Footer from '../components/layout/footer';
-import MainSection from '../components/content/main';
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer';
+import MainSection from '../components/content/Main';
+import About from '../components/content/About';
 
 export default function Portfolio() {
   return (
@@ -9,6 +10,7 @@ export default function Portfolio() {
       <Header />
         <div className='container mt-24 mx-auto py-4 px-12' >
           <MainSection />
+          <About />
         </div>
       </main>
       <Footer />

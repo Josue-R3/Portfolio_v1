@@ -1,4 +1,11 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    reactStrictMode: true,
+    experimental: {
+      reactRefresh: true,
+    },
+  };
+  
+  export default nextConfig;
+  
