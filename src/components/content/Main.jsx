@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function MainSection() {
     return (
-        <section id="#main">
+        <section id="home">
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 sm:gap-12">
                 <div className="col-span-5 place-self-center mt-4 lg:mt-0">
                     <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative mx-auto sm:ml-0 sm:mr-8">
