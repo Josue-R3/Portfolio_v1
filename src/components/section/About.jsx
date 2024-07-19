@@ -17,7 +17,8 @@ const TAB_DATA = [
         constantemente. Mi versatilidad en el trabajo me permite adaptarme y
         contribuir significativamente en cada proyecto que emprendo.
       </p>
-    )
+    ),
+    image: avatar
   },
   {
     title: 'Skills',
@@ -29,7 +30,8 @@ const TAB_DATA = [
         <li>Javascript</li>
         <li>WordPress</li>
       </ul>
-    )
+    ),
+    image: avatar
   },
   {
     title: 'Education',
@@ -40,7 +42,8 @@ const TAB_DATA = [
         <li>ISTE</li>
         <li>UEA</li>
       </ul>
-    )
+    ),
+    image: ''
   },
   {
     title: 'Experience',
@@ -50,7 +53,8 @@ const TAB_DATA = [
         <li>ISTE</li>
         <li>PELByte</li>
       </ul>
-    )
+    ),
+    image: ''
   }
 ];
 
@@ -58,7 +62,7 @@ function TabButton({ active, selectTab, children }) {
   const buttonClasses = active
     ? 'text-background transform rotate-360 bg-white'
     : 'text-[#ADB7BE]';
-  
+
   return (
     <Button variant="light" color="primary" onClick={selectTab} className={`transform -rotate-90 mb-8 hover:text-white ${buttonClasses}`}>
       <p className="font-semibold hover:text-white border-b border-white">
@@ -78,6 +82,8 @@ export default function About() {
     });
   };
 
+  const currentTab = TAB_DATA.find((t) => t.id === tab);
+
   return (
     <section id="about" className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
@@ -96,12 +102,12 @@ export default function About() {
               ))}
             </div>
             <div className="pl-4">
-              {TAB_DATA.find((t) => t.id === tab).content}
+              {currentTab.content}
             </div>
           </div>
         </div>
         <div className="place-self-center">
-          <Image src={avatar} width={500} height={500} alt="about" />
+          <Image src={currentTab.image} width={500} height={500} alt={currentTab.title} />
         </div>
       </div>
     </section>

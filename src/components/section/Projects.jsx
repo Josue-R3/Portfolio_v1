@@ -1,53 +1,53 @@
 import Image from "next/image";
 import React from "react";
 import { Card, CardHeader, CardBody, CardFooter, Button } from "@nextui-org/react";
+import { FaGithub } from "react-icons/fa";
 import APP_MOVIL from '../../../public/images/APP_MOVIL.png';
 import PSI from '../../../public/images/PSI.png';
 import ACCESS from '../../../public/images/ACCESS.png';
 import PRUEBA_GALA from '../../../public/images/PRUEBA_GALA.png';
 import PRUEBA_ISTE from '../../../public/images/PRUEBA_ISTE.png';
-import { FaGithub } from "react-icons/fa";
 
 const CARD_DATA = [
-    {
-      title: 'Prueba Técnica ISTE',
-      image: PRUEBA_ISTE,
-      description: 'Description of Distributivos APP',
-      github: '#',
-      live: '#',
-      details: '#'
-    },
-    {
-      title: 'Prueba Técnica GALA',
-      image: PRUEBA_GALA,
-      description: 'Description of Distributivos APP',
-      github: '#',
-      live: '#',
-      details: '#'
-    },
   {
-    title: 'Distributivos APP',
-    image: ACCESS,
-    description: 'Description of Distributivos APP',
+    title: 'PSI',
+    image: PSI,
+    description: 'Description of PSI',
     github: '#',
-    live: '#',
-    details: '#'
+    details: '#',
+    isOrganization: true
   },
   {
     title: 'YoSoyISTE',
     image: APP_MOVIL,
     description: 'Description of YoSoyISTE',
     github: '#',
-    live: '#',
-    details: '#'
+    details: '#',
+    isOrganization: true
   },
   {
-    title: 'PSI',
-    image: PSI,
-    description: 'Description of PSI',
+    title: 'Distributivos APP',
+    image: ACCESS,
+    description: 'Description of Distributivos APP',
     github: '#',
-    live: '#',
-    details: '#'
+    details: '#',
+    isOrganization: true
+  },
+  {
+    title: 'Prueba Técnica ISTE',
+    image: PRUEBA_ISTE,
+    description: 'Description of Distributivos APP',
+    github: '#',
+    details: '#',
+    isOrganization: false
+  },
+  {
+    title: 'Prueba Técnica GALA',
+    image: PRUEBA_GALA,
+    description: 'Description of Distributivos APP',
+    github: '#',
+    details: '#',
+    isOrganization: false
   },
 ];
 
@@ -69,16 +69,30 @@ export default function Projects() {
                 />
               </CardHeader>
               <CardBody className="text-left p-4">
-                <h3 className="text-xl font-bold mb-2">{card.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-white">{card.title}</h3>
                 <p className="text-[#ADB7BE]">{card.description}</p>
               </CardBody>
               <CardFooter className="flex justify-between p-4">
-                <Button startContent={<FaGithub />} flat as="a" href={card.github} className="text-white bg-gray-700 hover:bg-gray-800">
-                  GitHub
-                </Button>
-                <Button auto flat as="a" href={card.live} className="text-white bg-gray-700 hover:bg-gray-800">
-                  Live
-                </Button>
+                {card.isOrganization ? (
+                  <Button
+                    startContent={<FaGithub />}
+                    flat
+                    isDisabled
+                    className="text-white bg-gray-700 hover:bg-gray-800"
+                  >
+                    GitHub
+                  </Button>
+                ) : (
+                  <Button
+                    startContent={<FaGithub />}
+                    flat
+                    as="a"
+                    href={card.github}
+                    className="text-white bg-gray-700 hover:bg-gray-800"
+                  >
+                    GitHub
+                  </Button>
+                )}
                 <Button auto flat as="a" href={card.details} className="text-white bg-gray-700 hover:bg-gray-800">
                   Details
                 </Button>
