@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { TypeAnimation } from 'react-type-animation';
 
-export default function MainSection() {
+export default function Home() {
     return (
         <section id="home">
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 sm:gap-12">
@@ -38,7 +38,7 @@ export default function MainSection() {
                             />
                         </span>
                     </h1>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+                    {/*<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
                         Tecnólogo en Desarrollo de Aplicaciones Web<br />
                         Joven y entusiasta en la búsqueda de soluciones que influyan de manera positiva a las personas y a largo plazo.
                     </p>
@@ -50,7 +50,7 @@ export default function MainSection() {
                         <Button className="px-6 py-3 w-full sm:w-fit rounded-full bg-white mt-3" variant="ghost">
                             Contactame
                         </Button>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
         </section>

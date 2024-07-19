@@ -1,12 +1,15 @@
-import MainSection from "../components/content/Main";
-import About from "../components/content/About";
+import Home from "../components/section/Home";
+import Projects from "../components/section/Projects";
+import About from "../components/section/About";
+import Contact from "../components/section/Contact";
 
 export default function Portfolio() {
   return (
     <>
-      <MainSection />
+      <Home />
+      <Projects />
       <About />
-      {/* en teoria aqui iria el resto de secciones */}
+      <Contact />
     </>
   );
 }

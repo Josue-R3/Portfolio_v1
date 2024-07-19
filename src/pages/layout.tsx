@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <div className="h-full min-h-screen">
         <Header />
-        <PageWrapper children={children} />
+        <PageWrapper>{children}</PageWrapper>
         <Footer />
       </div>
     </>
