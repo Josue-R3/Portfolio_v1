@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useTransition, useState } from "react";
-import avatar from "../../../public/images/avatar.png";
 import { Button } from "@nextui-org/react";
+import avatar from "../../../public/images/avatar.png";  // Ruta correcta del avatar
 
 const TAB_DATA = [
   {
@@ -43,7 +43,7 @@ const TAB_DATA = [
         <li>UEA</li>
       </ul>
     ),
-    image: ''
+    image: avatar
   },
   {
     title: 'Experience',
@@ -54,7 +54,7 @@ const TAB_DATA = [
         <li>PELByte</li>
       </ul>
     ),
-    image: ''
+    image: avatar
   }
 ];
 
@@ -64,7 +64,7 @@ function TabButton({ active, selectTab, children }) {
     : 'text-[#ADB7BE]';
 
   return (
-    <Button variant="light" color="primary" onClick={selectTab} className={`transform -rotate-90 mb-8 hover:text-white ${buttonClasses}`}>
+    <Button variant="light" color="primary" onClick={selectTab} className={`mx-2 hover:text-white ${buttonClasses}`}>
       <p className="font-semibold hover:text-white border-b border-white">
         {children}
       </p>
@@ -85,29 +85,29 @@ export default function About() {
   const currentTab = TAB_DATA.find((t) => t.id === tab);
 
   return (
-    <section id="about" className="text-white">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full relative">
-          <h2 className="text-4xl font-bold text-white mb-8">About</h2>
-          <div className="flex">
-            <div className="flex flex-col items-center justify-center gap-10 pr-8">
-              {TAB_DATA.map((tabItem) => (
-                <TabButton
-                  key={tabItem.id}
-                  selectTab={() => handleTabChange(tabItem.id)}
-                  active={tab === tabItem.id}
-                >
-                  {tabItem.title}
-                </TabButton>
-              ))}
-            </div>
+    <section className="text-white">
+      <div id="about" className="flex flex-col items-center py-8 px-4 xl:px-16 sm:py-16">
+        <h2 className="text-4xl font-bold text-white mb-12">About</h2>
+        <div className="flex justify-center w-full mb-8">
+          {TAB_DATA.map((tabItem) => (
+            <TabButton
+              key={tabItem.id}
+              selectTab={() => handleTabChange(tabItem.id)}
+              active={tab === tabItem.id}
+            >
+              {tabItem.title}
+            </TabButton>
+          ))}
+        </div>
+        <div className="flex flex-col md:flex-row items-center gap-8 w-full">
+          <div className="flex justify-center w-full md:w-1/2">
+            <Image src={currentTab.image} width={500} height={500} alt={currentTab.title} />
+          </div>
+          <div className="text-left flex flex-col h-full w-full md:w-1/2">
             <div className="pl-4">
               {currentTab.content}
             </div>
           </div>
-        </div>
-        <div className="place-self-center">
-          <Image src={currentTab.image} width={500} height={500} alt={currentTab.title} />
         </div>
       </div>
     </section>
