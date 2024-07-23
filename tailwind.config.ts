@@ -13,7 +13,8 @@ const config: Config = {
     extend: {
       colors:{
         //background: '#12131C',
-        background: "#1C2120",
+        //background: "#1C2120",
+        background: '#212121',
       }
     },
   },

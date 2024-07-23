@@ -8,8 +8,8 @@ export default function Portfolio() {
     <>
       {/*<Home />*/}
       <Projects />
-      <About />
-      <Contact />
+      {/*<About />*/}
+      {/*<Contact />*/}
     </>
   );
 }
