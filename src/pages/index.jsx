@@ -6,7 +6,7 @@ import Contact from "../components/section/Contact";
 export default function Portfolio() {
   return (
     <>
-      <Home />
+      {/*<Home />*/}
       <Projects />
       <About />
       <Contact />
