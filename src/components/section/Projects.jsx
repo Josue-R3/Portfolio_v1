@@ -16,7 +16,7 @@ const CARD_DATA = [
     image: PSI,
     github: '#',
     category: 'web',
-    description: 'Aplicación web con consumo de APIs, servicios en la nube y almacenamiento en gestor documental.',
+    description: 'Aplicación Web con consumo de APIs, servicios en la nube y almacenamiento en gestor documental.',
     tecnologies: [<FaReact key="react" />, <RiNextjsFill key="nextjs" />, <RiTailwindCssFill key="tailwind" />, <SiMicrosoftazure key="azure" />, <SiMicrosoftsharepoint key="sharepoint" />]
   },
   {

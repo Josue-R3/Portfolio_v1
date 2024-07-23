@@ -8,7 +8,7 @@ export default function Portfolio() {
     <>
       {/*<Home />*/}
       <Projects />
-      {/*<About />*/}
+      <About />
       {/*<Contact />*/}
     </>
   );

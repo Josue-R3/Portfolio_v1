@@ -1,60 +1,70 @@
-import Image from "next/image";
+// components/About.js
 import React, { useTransition, useState } from "react";
 import { Button } from "@nextui-org/react";
-import avatar from "../../../public/images/avatar.png";  // Ruta correcta del avatar
+import Myself from './Myself';
+import Skills from './Skills';
+import avatar from "../../../public/images/avatar.png";
+import Image from "next/image";
 
 const TAB_DATA = [
   {
     title: 'Myself',
     id: 'myself',
-    content: (
-      <p className="text-base lg:text-lg">
-        Hola, me llamo Josue. Con 21 años y de origen ecuatoriano, me gradué
-        como Tecnólogo en Desarrollo de Aplicaciones Web. Me apasionan los
-        proyectos que pueden tener un impacto positivo en la vida de las
-        personas. Siempre busco soluciones efectivas y duraderas, y tengo
-        una curiosidad innata que me impulsa a aprender y crecer
-        constantemente. Mi versatilidad en el trabajo me permite adaptarme y
-        contribuir significativamente en cada proyecto que emprendo.
-      </p>
-    ),
-    image: avatar
+    content: <Myself />
   },
   {
     title: 'Skills',
     id: 'skills',
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Html</li>
-        <li>Css</li>
-        <li>Javascript</li>
-        <li>WordPress</li>
-      </ul>
-    ),
-    image: avatar
+    content: <Skills />
   },
   {
     title: 'Education',
     id: 'education',
     content: (
-      <ul className="list-disc pl-2">
-        <li>SAINT LEO</li>
-        <li>ISTE</li>
-        <li>UEA</li>
-      </ul>
-    ),
-    image: avatar
+      <div className="flex flex-col md:flex-row items-center gap-8 w-full">
+        <div className="flex justify-center w-full md:w-1/3">
+          <Image 
+            src={avatar} 
+            width={250} 
+            height={250} 
+            alt="Education"
+          />
+        </div>
+        <div className="text-left flex flex-col h-full w-full md:w-2/3">
+          <div className="pl-4">
+            <ul className="list-disc pl-2">
+              <li>SAINT LEO</li>
+              <li>ISTE</li>
+              <li>UEA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
   },
   {
     title: 'Experience',
     id: 'experience',
     content: (
-      <ul className="list-disc pl-2">
-        <li>ISTE</li>
-        <li>PELByte</li>
-      </ul>
-    ),
-    image: avatar
+      <div className="flex flex-col md:flex-row items-center gap-8 w-full">
+        <div className="flex justify-center w-full md:w-1/3">
+          <Image 
+            src={avatar} 
+            width={250} 
+            height={250} 
+            alt="Experience"
+          />
+        </div>
+        <div className="text-left flex flex-col h-full w-full md:w-2/3">
+          <div className="pl-4">
+            <ul className="list-disc pl-2">
+              <li>ISTE</li>
+              <li>PELByte</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
   }
 ];
 
@@ -99,15 +109,8 @@ export default function About() {
             </TabButton>
           ))}
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-          <div className="flex justify-center w-full md:w-1/2">
-            <Image src={currentTab.image} width={500} height={500} alt={currentTab.title} />
-          </div>
-          <div className="text-left flex flex-col h-full w-full md:w-1/2">
-            <div className="pl-4">
-              {currentTab.content}
-            </div>
-          </div>
+        <div className="w-full">
+          {currentTab.content}
         </div>
       </div>
     </section>
