@@ -3,9 +3,9 @@ import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagram } from "react-icons/
 import { Link as ScrollLink } from "react-scroll";
 
 const navLinks = [
-  { title: "Home", path: "home" },
-  { title: "Projects", path: "projects" },
   { title: "About", path: "about" },
+  { title: "Projects", path: "projects" },
+  { title: "Education", path: "education" },
   { title: "Contact", path: "contact" },
 ];
 
@@ -50,6 +50,13 @@ export default function Header() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-10 bg-background flex items-center justify-between mx-auto px-8 py-4">
+      <div className="hidden md:flex items-center space-x-4 text-white">
+        {socialLinks.map((link, index) => (
+          <a key={index} href={link.path} className="hover:text-gray-400">
+            {link.icon}
+          </a>
+        ))}
+      </div>
       <div className="flex items-center space-x-8">
         <ul className="hidden md:flex space-x-4 text-white">
           {navLinks.map((link, index) => (
@@ -61,21 +68,14 @@ export default function Header() {
                 spy={true}
                 offset={-80}
                 className={`nav-link ${activeLink === link.path ? "nav-link-active" : ""} cursor-pointer`}
-                onSetActive={(to: string) => handleSetActive(to)}
-                onSetInactive={(to: string) => handleSetInactive(to)}
+                onSetActive={handleSetActive}
+                onSetInactive={handleSetInactive}
               >
                 {link.title}
               </ScrollLink>
             </li>
           ))}
         </ul>
-      </div>
-      <div className="hidden md:flex items-center space-x-4 text-white">
-        {socialLinks.map((link, index) => (
-          <a key={index} href={link.path} className="hover:text-gray-400">
-            {link.icon}
-          </a>
-        ))}
       </div>
       <div className="md:hidden ml-4">
         <button
@@ -97,21 +97,21 @@ export default function Header() {
                   spy={true}
                   offset={-80}
                   className={`nav-link ${activeLink === link.path ? "nav-link-active" : ""} cursor-pointer`}
-                  onSetActive={(to: string) => handleSetActive(to)}
-                  onSetInactive={(to: string) => handleSetInactive(to)}
+                  onSetActive={handleSetActive}
+                  onSetInactive={handleSetInactive}
                   onClick={toggleHeader}
                 >
                   {link.title}
                 </ScrollLink>
               </li>
             ))}
-            {socialLinks.map((link, index) => (
-              <li key={index}>
-                <a href={link.path} className="hover:text-gray-400">
+            <div className="flex space-x-4">
+              {socialLinks.map((link, index) => (
+                <a key={index} href={link.path} className="hover:text-gray-400">
                   {link.icon}
                 </a>
-              </li>
-            ))}
+              ))}
+            </div>
           </ul>
         </div>
       )}
