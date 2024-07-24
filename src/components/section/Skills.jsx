@@ -27,6 +27,7 @@ const TECHNOLOGIES = [
 // Definición del componente Skills
 const Skills = () => (
   <section className="text-white w-full sm:py-6 py-6">
+    <div className="container mx-auto">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
         {TECHNOLOGIES.map((tech) => (
           <div key={tech.name} className="flex flex-col items-center">
@@ -42,6 +43,7 @@ const Skills = () => (
           </div>
         ))}
       </div>
+    </div>
   </section>
 );
 

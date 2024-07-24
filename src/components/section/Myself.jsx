@@ -5,7 +5,7 @@ import me from "../../../public/images/avatar_v3.png";
 
 const Myself = () => (
   <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-    <div className="flex justify-center w-full md:w-1/3">
+    <div className="flex justify-center md:justify-start w-full md:w-1/3">
       <Avatar
         src={me.src}
         width={350}
@@ -16,7 +16,7 @@ const Myself = () => (
       />
     </div>
     <div className="text-left flex flex-col h-full w-full md:w-2/3">
-      <div className="pl-4">
+      <div className="md:pl-4">
         <p className="text-base lg:text-lg">
           Hola, me llamo Josue. Con 21 años y de origen ecuatoriano, me gradué
           como Tecnólogo en Desarrollo de Aplicaciones Web. Me apasionan los
