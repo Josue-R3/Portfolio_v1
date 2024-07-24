@@ -1,5 +1,4 @@
-// components/About.js
-import React, { useTransition, useState } from "react";
+import React, { useState, useTransition } from "react";
 import { Button } from "@nextui-org/react";
 import Myself from './Myself';
 import Skills from './Skills';
@@ -68,20 +67,6 @@ const TAB_DATA = [
   }
 ];
 
-function TabButton({ active, selectTab, children }) {
-  const buttonClasses = active
-    ? 'text-background transform rotate-360 bg-white'
-    : 'text-[#ADB7BE]';
-
-  return (
-    <Button variant="light" color="primary" onClick={selectTab} className={`mx-2 hover:text-white ${buttonClasses}`}>
-      <p className="font-semibold hover:text-white border-b border-white">
-        {children}
-      </p>
-    </Button>
-  );
-}
-
 export default function About() {
   const [tab, setTab] = useState("myself");
   const [isPending, startTransition] = useTransition();
@@ -95,18 +80,18 @@ export default function About() {
   const currentTab = TAB_DATA.find((t) => t.id === tab);
 
   return (
-    <section className="text-white">
-      <div id="about" className="flex flex-col items-center py-8 px-4 xl:px-16 sm:py-16">
-        <h2 className="text-4xl font-bold text-white mb-12">About</h2>
-        <div className="flex justify-center w-full mb-8">
+    <section className="text-white py-16">
+      <div id="about" className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-10">About</h2>
+        <div className="flex justify-center mb-8">
           {TAB_DATA.map((tabItem) => (
-            <TabButton
+            <button
               key={tabItem.id}
-              selectTab={() => handleTabChange(tabItem.id)}
-              active={tab === tabItem.id}
+              onClick={() => handleTabChange(tabItem.id)}
+              className={`m-2 px-4 sm:px-8 py-2 ${tab === tabItem.id ? 'text-white font-semibold border-b border-white' : 'text-gray-500'} hover:text-white`}
             >
               {tabItem.title}
-            </TabButton>
+            </button>
           ))}
         </div>
         <div className="w-full">

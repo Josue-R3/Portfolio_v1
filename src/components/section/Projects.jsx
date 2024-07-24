@@ -52,8 +52,8 @@ export default function Projects() {
   return (
     <section className="text-white py-16">
       <div id="projects" className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12">Mis Proyectos</h2>
-        <div className="flex justify-center mb-12">
+        <h2 className="text-4xl font-bold mb-10">Proyects</h2>
+        <div className="flex justify-center mb-8">
           {FILTER_OPTIONS.map((option) => (
             <button
               key={option}
