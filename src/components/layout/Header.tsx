@@ -10,9 +10,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { title: "GitHub", path: "url", icon: <FaGithub /> },
-  { title: "LinkedIn", path: "url", icon: <FaLinkedin /> },
-  { title: "Instagram", path: "url", icon: <FaInstagram /> },
+  { title: "GitHub", path: "url", icon: <FaGithub className="text-3xl" /> },
+  { title: "LinkedIn", path: "url", icon: <FaLinkedin className="text-3xl" /> },
+  { title: "Instagram", path: "url", icon: <FaInstagram className="text-3xl" /> },
 ];
 
 export default function Header() {
@@ -49,7 +49,7 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-background flex items-center justify-between mx-auto px-8 py-8">
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-background flex items-center justify-between mx-auto px-8 py-4">
       <div className="flex items-center space-x-8">
         <ul className="hidden md:flex space-x-4 text-white">
           {navLinks.map((link, index) => (
@@ -80,7 +80,7 @@ export default function Header() {
       <div className="md:hidden ml-4">
         <button
           onClick={toggleHeader}
-          className="flex items-center px-3 py-2 rounded border-white bg-[#121212] text-white hover:bg-opacity-80"
+          className="flex items-center px-3 py-2 border-white bg-[#121212] text-white hover:bg-opacity-80"
         >
           {headerOpen ? <FaTimes className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
         </button>

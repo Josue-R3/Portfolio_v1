@@ -1,4 +1,3 @@
-// components/About.js
 import React, { useState, useTransition } from "react";
 import Myself from './Myself';
 import Skills from './Skills';
@@ -42,9 +41,9 @@ export default function About() {
   return (
     <section className="text-white py-16">
       <div id="about" className="container mx-auto flex flex-col items-center w-full">
-        <div className="flex w-full justify-between items-center mb-8">
-          <h2 className="text-4xl font-bold">About</h2>
-          <div className="flex justify-center md:justify-end">
+        <div className="flex flex-col md:flex-row w-full justify-between items-center mb-8">
+          <h2 className="text-4xl font-bold mb-4 md:mb-0">About</h2>
+          <div className="flex flex-wrap justify-center md:justify-end w-full md:w-auto">
             {TAB_DATA.map((tabItem) => (
               <button
                 key={tabItem.id}
