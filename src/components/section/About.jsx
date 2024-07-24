@@ -1,10 +1,8 @@
 // components/About.js
 import React, { useState, useTransition } from "react";
-import { Divider } from "@nextui-org/react";
 import Myself from './Myself';
 import Skills from './Skills';
-import avatar from "../../../public/images/avatar.png";
-import Image from "next/image";
+import Education from './Education'; // Importar el componente Education
 
 const TAB_DATA = [
   {
@@ -20,51 +18,12 @@ const TAB_DATA = [
   {
     title: 'Education',
     id: 'education',
-    content: (
-      <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-        <div className="flex justify-center w-full md:w-1/3">
-          <Image 
-            src={avatar} 
-            width={250} 
-            height={250} 
-            alt="Education"
-          />
-        </div>
-        <div className="text-left flex flex-col h-full w-full md:w-2/3">
-          <div className="md:pl-4">
-            <ul className="list-disc pl-2">
-              <li>SAINT LEO</li>
-              <li>ISTE</li>
-              <li>UEA</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    )
+    content: <Education /> // Usar el componente Education
   },
   {
     title: 'Experience',
     id: 'experience',
-    content: (
-      <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-        <div className="flex justify-center w-full md:w-1/3">
-          <Image 
-            src={avatar} 
-            width={250} 
-            height={250} 
-            alt="Experience"
-          />
-        </div>
-        <div className="text-left flex flex-col h-full w-full md:w-2/3">
-          <div className="md:pl-4">
-            <ul className="list-disc pl-2">
-              <li>ISTE</li>
-              <li>PELByte</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    )
+    content: <Education /> // Usar el componente Education para experiencia también si es el mismo diseño
   }
 ];
 
@@ -82,7 +41,7 @@ export default function About() {
 
   return (
     <section className="text-white py-16">
-      <div id="about" className="container mx-auto flex flex-col items-center">
+      <div id="about" className="container mx-auto flex flex-col items-center w-full">
         <div className="flex w-full justify-between items-center mb-8">
           <h2 className="text-4xl font-bold">About</h2>
           <div className="flex justify-center md:justify-end">
@@ -99,7 +58,7 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full flex justify-center">
           <div className="w-full">
             {currentTab.content}
           </div>
