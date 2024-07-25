@@ -19,6 +19,7 @@ export default function About() {
                 objectFit="cover"
                 className="transform translate-y-6" // Ajusta este valor para mover la imagen hacia abajo
               />
+              {/*<div className="circle-animation" ></div>*/}
             </div>
           </div>
           <div className="flex flex-col h-full w-full md:w-2/3 text-center md:text-left">

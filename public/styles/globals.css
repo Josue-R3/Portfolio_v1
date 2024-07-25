@@ -16,3 +16,24 @@
     border-bottom: 2px solid white;
   }
   
+  /* anmiacion del avatar */
+  .circle-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top: 2px solid #FFFFFF; /* Color del borde superior */
+    border-right: 2px solid #FFFFFF; /* Color del borde derecho */
+    border-radius: 25%;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
