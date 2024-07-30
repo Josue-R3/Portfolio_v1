@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { TypeAnimation } from 'react-type-animation';
 import me from "../../../public/images/avatar_v3.png";
-import Skills from "./Skills"; // Import the Skills component
+import Skills from "./Skills"
 
 export default function About() {
   return (

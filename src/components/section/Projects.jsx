@@ -16,7 +16,7 @@ const CARD_DATA = [
     image: PSI,
     github: '#',
     category: 'web',
-    description: 'Aplicación Web con consumo de APIs, servicios en la nube y almacenamiento en gestor documental.',
+    description: 'Aplicación Web con consumo de APIs, autenticación y roles, conexión con servicios en la nube de Azure y almacenamiento en gestor documental Sharepoint.',
     tecnologies: [<FaReact key="react" />, <RiNextjsFill key="nextjs" />, <RiTailwindCssFill key="tailwind" />, <SiMicrosoftazure key="azure" />, <SiMicrosoftsharepoint key="sharepoint" />]
   },
   {
@@ -24,7 +24,7 @@ const CARD_DATA = [
     image: APP_MOVIL,
     github: '#',
     category: 'mobile',
-    description: 'Aplicación móvil con consumo de APIs, gestión de estados con RiverPod, y servicios en la nube.',
+    description: 'Aplicación móvil con consumo de APIs, autenticación y roles, gestión de estados con RiverPod, conexión con servicios en la nube.',
     tecnologies: [<DiDart key="dart" />, <RiFlutterFill key="flutter" />, <SiMicrosoftazure key="azure" />]
   },
   {
@@ -32,7 +32,7 @@ const CARD_DATA = [
     image: ACCESS,
     github: '',
     category: 'desktop',
-    description: 'Aplicación de escritorio para la gestión de distributivos académicos.',
+    description: 'Aplicación de escritorio en Microsoft Access para la gestión de distributivos académicos.',
     tecnologies: [<SiVisualbasic key="visualbasic" />, <SiMicrosoftaccess key="access" />, <SiMicrosoftexcel key="excel" />]
   },
 ];
