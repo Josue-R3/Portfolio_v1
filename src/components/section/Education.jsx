@@ -5,72 +5,58 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import TimelineOppositeContent, {
-  timelineOppositeContentClasses,
-} from '@mui/lab/TimelineOppositeContent';
 import { Typography } from '@mui/material';
 
 const data = [
   {
-    title: "Ingeniería en Ciberseguridad - Universidad de Saint Leo",
+    title: "Ingeniería en Ciberseguridad",
+    place: 'Universidad de Saint Leo',
     status: "En curso",
-    description: "Cursando la carrera en Ingeniería de ciberseguridad en modalidad remota.",
     category: 'education',
-    archive: null
   },
   {
-    title: "Tecnólogo - Instituto Superior Tecnológico España",
+    title: "Tecnólogo en Desarrollo Web",
+    place: 'Instituto Superior Tecnológico España',
     duration: "2021 - 2023",
-    description: "Graduado como Tecnólogo en Desarrollo de Software, adquirí habilidades en el desarrollo de aplicaciones web y móviles, gestión de bases de datos, arquitectura de software y conocimientos en la creación de páginas web.",
     category: 'education',
-    archive: null
   },
   {
-    title: "Bachiller en Ciencias - Unidad Educativa Ambato",
+    title: "Bachiller en Ciencias",
+    place: 'Unidad Educativa Ambato',
     duration: "2013 - 2020",
-    description: "Graduado como Bachiller en Ciencias, desarrollé una sólida base en ciencias naturales y matemáticas, lo que me permitió comprender mejor los fundamentos de la programación y la tecnología.",
     category: 'education',
-    archive: null
   },
   {
     title: "Certificación en SQL",
     year: "2023",
-    description: "Certificación otorgada por Edutin",
+    place: "Edutin",
     category: 'certification',
-    archive: '/public/certificates/MySQL Edutin.pdf'
   },
   {
     title: "Certificación en Git",
     year: "2022",
-    description: "Curso de certificación en control de versiones con Git.",
+    place: "Edutin.",
     category: 'certification',
-    archive: null
   }
 ];
 
 const TimelineSection = ({ events, title }) => (
   <div className="w-full">
-    <h2 className="text-4xl font-bold mb-8">{title}</h2>
-    <Timeline
-      sx={{
-        [`& .${timelineOppositeContentClasses.root}`]: {
-          flex: 0.2,
-        },
-      }}
-    >
+    <h2 className="text-4xl font-bold mb-8 text-center">{title}</h2>
+    <Timeline className="timeline-left">
       {events.map((item, index) => (
         <TimelineItem key={index}>
-          <TimelineOppositeContent className='text-gray-400'>
-            {item.status || item.duration || item.year}
-          </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineDot />
             {index < events.length - 1 && <TimelineConnector />}
           </TimelineSeparator>
-          <TimelineContent>
+          <TimelineContent className="timeline-content-left">
             <div className="p-4 bg-transparent hover:bg-gray-800 text-white rounded-lg shadow-lg">
+              <p className="text-gray-400">
+                {item.status || item.duration || item.year}
+              </p>
               <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="mt-2">{item.description}</p>
+              <p className="mt-2">{item.place}</p>
               {item.archive && (
                 <p className="mt-2">
                   <a href={item.archive} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
