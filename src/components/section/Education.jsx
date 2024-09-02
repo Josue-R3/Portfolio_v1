@@ -5,9 +5,24 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { Typography } from '@mui/material';
+import TimelineOppositeContent, {
+  timelineOppositeContentClasses,
+} from '@mui/lab/TimelineOppositeContent';
+import { Typography, Box } from '@mui/material';
 
 const data = [
+  {
+    title: "Técnico en Desarrollo de Software",
+    place: 'Instituto Superior Tecnológico España',
+    status: "En curso",
+    category: 'experience',
+  },
+  {
+    title: "Técnico en Soporte Empresarial",
+    place: 'PELByte',
+    status: "2021 - 2023",
+    category: 'experience',
+  },
   {
     title: "Ingeniería en Ciberseguridad",
     place: 'Universidad de Saint Leo',
@@ -40,51 +55,67 @@ const data = [
   }
 ];
 
-const TimelineSection = ({ events, title }) => (
-  <div className="w-full">
-    <h2 className="text-4xl font-bold mb-8 text-center">{title}</h2>
-    <Timeline className="timeline-left">
-      {events.map((item, index) => (
-        <TimelineItem key={index}>
-          <TimelineSeparator>
-            <TimelineDot />
-            {index < events.length - 1 && <TimelineConnector />}
-          </TimelineSeparator>
-          <TimelineContent className="timeline-content-left">
-            <div className="p-4 bg-transparent hover:bg-gray-800 text-white rounded-lg shadow-lg">
-              <p className="text-gray-400">
-                {item.status || item.duration || item.year}
-              </p>
-              <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="mt-2">{item.place}</p>
-              {item.archive && (
-                <p className="mt-2">
-                  <a href={item.archive} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                    Ver Certificado
-                  </a>
-                </p>
-              )}
-            </div>
-          </TimelineContent>
-        </TimelineItem>
-      ))}
-    </Timeline>
-  </div>
-);
-
 const Education = () => {
+  const experienceEvents = data.filter(item => item.category === 'experience');
   const educationEvents = data.filter(item => item.category === 'education');
   const certificationEvents = data.filter(item => item.category === 'certification');
 
+  const renderTimelineItems = (events, categoryTitle) => (
+    events.map((item, index) => (
+      <TimelineItem key={index}>
+        {/* Título de la sección como 'OppositeContent' */}
+        <TimelineOppositeContent
+          sx={{ 
+            flex: 0.2, 
+            paddingRight: '16px',
+            textAlign: 'left', // Alinear a la izquierda
+            paddingBottom: '16px', // Añadir espaciado entre items
+          }}
+        >
+          {index === 0 && (
+            <Typography variant="h5" fontWeight="bold" sx={{ color: 'white' }}>
+              {categoryTitle}
+            </Typography>
+          )}
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="primary" />
+          {index < events.length - 1 && <TimelineConnector />}
+        </TimelineSeparator>
+        <TimelineContent sx={{ paddingTop: 0, paddingBottom: '16px' }}> {/* Añadir espaciado entre items */}
+          <Box className="p-4 bg-gray-800 text-white rounded-lg shadow-lg">
+            <Typography variant="body2" className="text-gray-400">
+              {item.status || item.duration || item.year}
+            </Typography>
+            <Typography variant="h6" component="h3" className="text-xl font-semibold">
+              {item.title}
+            </Typography>
+            <Typography variant="body2" className="mt-1">
+              {item.place}
+            </Typography>
+          </Box>
+        </TimelineContent>
+      </TimelineItem>
+    ))
+  );
+
   return (
-    <section className="text-white py-16">
-      <div className="container mx-auto text-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <TimelineSection events={educationEvents} title="Education" />
-          <TimelineSection events={certificationEvents} title="Certifications" />
-        </div>
-      </div>
-    </section>
+    <Timeline
+      sx={{
+        [`& .${timelineOppositeContentClasses.root}`]: {
+          flex: 0.2,
+        },
+      }}
+    >
+      {/* Experiencia */}
+      {renderTimelineItems(experienceEvents, 'Experiencia')}
+
+      {/* Educación */}
+      {renderTimelineItems(educationEvents, 'Educación')}
+
+      {/* Certificaciones */}
+      {renderTimelineItems(certificationEvents, 'Certificaciones')}
+    </Timeline>
   );
 };
 

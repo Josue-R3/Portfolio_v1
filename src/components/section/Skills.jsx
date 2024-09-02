@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { Tooltip } from "@nextui-org/react";
 
 const TECHNOLOGIES = [
   { name: "HTML 5", image: "/images/logos/html5-original.svg" },
@@ -20,54 +19,26 @@ const TECHNOLOGIES = [
 ];
 
 const Skills = () => {
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [tooltipVisible, setTooltipVisible] = useState(false);
-
-  // Maneja el evento de movimiento del mouse
-  const handleMouseMove = (index) => {
-    setActiveIndex(index);
-    setTooltipVisible(true); // Mostrar el tooltip inmediatamente
-  };
-
-  // Resetea el estado cuando el cursor sale del contenedor
-  const handleMouseLeave = () => {
-    setActiveIndex(-1);
-    setTimeout(() => setTooltipVisible(false), 300); // Retraso para ocultar el tooltip
-  };
-
-  useEffect(() => {
-    if (activeIndex === -1) {
-      setTooltipVisible(false);
-    }
-  }, [activeIndex]);
-
   return (
-    <div
-      className="grid grid-cols-3 md:grid-cols-7 gap-8"
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="grid grid-cols-3 md:grid-cols-7 gap-8">
       {TECHNOLOGIES.map((tech, index) => (
         <div
           key={tech.name}
-          className="flex justify-center items-center"
-          onMouseMove={() => handleMouseMove(index)}
+          className="group flex justify-center items-center relative"
         >
-          <Tooltip
-            content={tech.name}
-            placement="top"
-            visible={tooltipVisible && activeIndex === index} // Controla la visibilidad del tooltip
-          >
-            <Image
-              src={tech.image}
-              alt={tech.name}
-              width={50}
-              height={50}
-              className={`w-12 h-12 transition-transform duration-300 transform ${
-                activeIndex === index ? "scale-150" : "scale-100"
-              }`}
-              style={tech.customStyle ? tech.customStyle : {}}
-            />
-          </Tooltip>
+          {/* Imagen con efecto de hover */}
+          <Image
+            src={tech.image}
+            alt={tech.name}
+            width={50}
+            height={50}
+            className="w-12 h-12 transform transition-transform duration-300 group-hover:scale-150"
+            style={tech.customStyle ? tech.customStyle : {}}
+          />
+          {/* Tooltip personalizado con Tailwind */}
+          <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-white text-black text-center text-xs rounded-lg px-2 py-1 transition-opacity duration-300 whitespace-nowrap">
+            {tech.name}
+          </div>
         </div>
       ))}
     </div>
