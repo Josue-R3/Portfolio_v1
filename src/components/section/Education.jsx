@@ -1,14 +1,5 @@
-import * as React from 'react';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import TimelineOppositeContent, {
-  timelineOppositeContentClasses,
-} from '@mui/lab/TimelineOppositeContent';
-import { Typography, Box } from '@mui/material';
+import { FaBriefcase, FaGraduationCap, FaCalendarAlt } from 'react-icons/fa';
+import { PiCertificateBold } from "react-icons/pi";
 
 const data = [
   {
@@ -32,91 +23,80 @@ const data = [
   {
     title: "Tecnólogo en Desarrollo Web",
     place: 'Instituto Superior Tecnológico España',
-    duration: "2021 - 2023",
+    status: "2021 - 2023",
     category: 'education',
   },
   {
     title: "Bachiller en Ciencias",
     place: 'Unidad Educativa Ambato',
-    duration: "2013 - 2020",
+    status: "2013 - 2020",
     category: 'education',
   },
   {
     title: "Certificación en SQL",
-    year: "2023",
     place: "Edutin",
+    status: "2023",
     category: 'certification',
   },
   {
     title: "Certificación en Git",
-    year: "2022",
-    place: "Edutin.",
+    place: "Edutin",
+    status: "2022",
     category: 'certification',
   }
 ];
 
-const Education = () => {
-  const experienceEvents = data.filter(item => item.category === 'experience');
-  const educationEvents = data.filter(item => item.category === 'education');
-  const certificationEvents = data.filter(item => item.category === 'certification');
+const TimelineItem = ({ item, isLast }) => (
+  <div className="relative pb-8">
+    {!isLast && (
+      <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-700" aria-hidden="true"></span>
+    )}
+    <div className="relative flex items-start">
+      <div className="relative flex items-center justify-center flex-shrink-0 w-8 h-8 mt-1 rounded-full bg-blue-500 ring-8 ring-gray-900">
+        {item.category === 'experience' && <FaBriefcase className="w-4 h-4 text-white" />}
+        {item.category === 'education' && <FaGraduationCap className="w-4 h-4 text-white" />}
+        {item.category === 'certification' && <PiCertificateBold className="w-4 h-4 text-white" />}
+      </div>
+      <div className="min-w-0 flex-1 ml-4 pt-1.5 rounded-lg bg-gray-800 p-4 hover:bg-gray-900"> {/* Borde redondeado y efecto hover */}
+        <div className="flex items-center text-sm text-gray-400 mb-1">
+          <FaCalendarAlt className="mr-2 h-4 w-4 flex-shrink-0" />
+          <span>{item.status}</span>
+        </div>
+        <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+        <p className="text-gray-400">{item.place}</p>
+      </div>
+    </div>
+  </div>
+);
 
-  const renderTimelineItems = (events, categoryTitle) => (
-    events.map((item, index) => (
-      <TimelineItem key={index}>
-        {/* Título de la sección como 'OppositeContent' */}
-        <TimelineOppositeContent
-          sx={{ 
-            flex: 0.2, 
-            paddingRight: '16px',
-            textAlign: 'left', // Alinear a la izquierda
-            paddingBottom: '16px', // Añadir espaciado entre items
-          }}
-        >
-          {index === 0 && (
-            <Typography variant="h5" fontWeight="bold" sx={{ color: 'white' }}>
-              {categoryTitle}
-            </Typography>
-          )}
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineDot color="primary" />
-          {index < events.length - 1 && <TimelineConnector />}
-        </TimelineSeparator>
-        <TimelineContent sx={{ paddingTop: 0, paddingBottom: '16px' }}> {/* Añadir espaciado entre items */}
-          <Box className="p-4 bg-gray-800 text-white rounded-lg shadow-lg">
-            <Typography variant="body2" className="text-gray-400">
-              {item.status || item.duration || item.year}
-            </Typography>
-            <Typography variant="h6" component="h3" className="text-xl font-semibold">
-              {item.title}
-            </Typography>
-            <Typography variant="body2" className="mt-1">
-              {item.place}
-            </Typography>
-          </Box>
-        </TimelineContent>
-      </TimelineItem>
-    ))
-  );
+const Timeline = ({ title, items }) => (
+  <div className="w-full mb-10"> {/* Mantener el ancho completo de cada columna */}
+    <h2 className="text-2xl font-bold mb-6 text-white">{title}</h2>
+    <div className="flow-root">
+      <ul role="list" className="-mb-8">
+        {items.map((item, index) => (
+          <li key={index}>
+            <TimelineItem item={item} isLast={index === items.length - 1} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
+export default function Component() {
+  const experience = data.filter(item => item.category === 'experience');
+  const education = data.filter(item => item.category === 'education');
+  const certifications = data.filter(item => item.category === 'certification');
 
   return (
-    <Timeline
-      sx={{
-        [`& .${timelineOppositeContentClasses.root}`]: {
-          flex: 0.2,
-        },
-      }}
-    >
-      {/* Experiencia */}
-      {renderTimelineItems(experienceEvents, 'Experiencia')}
-
-      {/* Educación */}
-      {renderTimelineItems(educationEvents, 'Educación')}
-
-      {/* Certificaciones */}
-      {renderTimelineItems(certificationEvents, 'Certificaciones')}
-    </Timeline>
+    <div className="max-w-full mx-auto p-4"> {/* Usar todo el ancho */}
+      <h1 className="text-3xl font-bold mb-12 text-center text-white">Trayectoria</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8"> {/* Separación entre categorías */}
+        <Timeline title="Experiencia" items={experience} />
+        <Timeline title="Educación" items={education} />
+        <Timeline title="Certificaciones" items={certifications} />
+      </div>
+    </div>
   );
-};
-
-export default Education;
+}
