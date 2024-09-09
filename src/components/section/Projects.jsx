@@ -51,7 +51,7 @@ export default function Projects() {
 
   return (
     <section className="text-white py-16">
-      <div id="projects" className="container mx-auto text-center">
+      <div id="projects" className="container mx-auto text-center py-10">
         <h2 className="text-4xl font-bold mb-10">Proyectos</h2>
         <div className="flex justify-center mb-8">
           {FILTER_OPTIONS.map((option) => (

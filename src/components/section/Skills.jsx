@@ -20,28 +20,31 @@ const TECHNOLOGIES = [
 
 const Skills = () => {
   return (
-    <div className="grid grid-cols-3 md:grid-cols-7 gap-8">
-      {TECHNOLOGIES.map((tech, index) => (
-        <div
+    <section id="skills" className="mt-10 py-10 " >
+      <h1 className="text-4xl font-bold mb-12 text-center text-white">Skills</h1>
+      <div className="grid grid-cols-3 md:grid-cols-7 gap-8">
+        {TECHNOLOGIES.map((tech, index) => (
+          <div
           key={tech.name}
           className="group flex justify-center items-center relative"
-        >
-          {/* Imagen con efecto de hover */}
-          <Image
-            src={tech.image}
-            alt={tech.name}
-            width={50}
-            height={50}
-            className="w-12 h-12 transform transition-transform duration-300 group-hover:scale-150"
-            style={tech.customStyle ? tech.customStyle : {}}
-          />
-          {/* Tooltip personalizado con Tailwind */}
-          <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-white text-black text-center text-xs rounded-lg px-2 py-1 transition-opacity duration-300 whitespace-nowrap">
-            {tech.name}
+          >
+            {/* Imagen con efecto de hover */}
+            <Image
+              src={tech.image}
+              alt={tech.name}
+              width={75}
+              height={75}
+              className="w-18 h-18 transform transition-transform duration-300 group-hover:scale-150"
+              style={tech.customStyle ? tech.customStyle : {}}
+              />
+            {/* Tooltip personalizado con Tailwind */}
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-white text-black text-center text-xs rounded-lg px-2 py-1 transition-opacity duration-300 whitespace-nowrap">
+              {tech.name}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

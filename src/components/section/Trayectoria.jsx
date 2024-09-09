@@ -84,19 +84,19 @@ const Timeline = ({ title, items }) => (
   </div>
 );
 
-export default function Component() {
+export default function Trayectoria() {
   const experience = data.filter(item => item.category === 'experience');
   const education = data.filter(item => item.category === 'education');
   const certifications = data.filter(item => item.category === 'certification');
 
   return (
-    <div className="max-w-full mx-auto p-4"> {/* Usar todo el ancho */}
-      <h1 className="text-3xl font-bold mb-12 text-center text-white">Trayectoria</h1>
+    <section id='education' className="max-w-full mx-auto p-4"> {/* Usar todo el ancho */}
+      <h1 className="text-4xl font-bold mb-12 text-center text-white">Trayectoria</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8"> {/* Separación entre categorías */}
         <Timeline title="Experiencia" items={experience} />
         <Timeline title="Educación" items={education} />
         <Timeline title="Certificaciones" items={certifications} />
       </div>
-    </div>
+    </section>
   );
 }

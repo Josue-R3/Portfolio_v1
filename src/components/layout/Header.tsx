@@ -80,7 +80,7 @@ export default function Header() {
       <div className="md:hidden ml-4">
         <button
           onClick={toggleHeader}
-          className="flex items-center px-3 py-2 border-white bg-[#121212] text-white hover:bg-opacity-80"
+          //className="flex items-center px-3 py-2 border-white bg-[#121212] text-white hover:bg-opacity-80"
         >
           {headerOpen ? <FaTimes className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
         </button>

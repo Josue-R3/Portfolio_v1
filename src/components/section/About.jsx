@@ -51,9 +51,6 @@ export default function About() {
                 versatilidad en el trabajo me permite adaptarme y contribuir
                 significativamente en cada proyecto que emprendo.
               </p>
-              <div className="mt-10">
-                <Skills />
-              </div>
             </div>
           </div>
         </div>
