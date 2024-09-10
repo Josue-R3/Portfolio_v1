@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import Image from 'next/image';
-import me from "../../../public/images/me.jpg";
+import me from "../../../public/images/avatar.png";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ export default function Contact() {
     message: ""
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e : any) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
@@ -21,7 +21,7 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e : any) => {
     e.preventDefault();
     console.log("Formulario enviado:", formData);
     setFormData({ name: "", email: "", message: "" });
@@ -39,20 +39,67 @@ export default function Contact() {
     <section id="contact" className="py-12">
       <div className="container mx-auto px-6 max-w-5xl">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">Contáctame</h2>
-        <div className="flex flex-col md:flex-row justify-between space-y-12 md:space-y-0 md:space-x-12">
-          <div className="w-full md:w-2/5 flex flex-col items-center space-y-6">
-            <div className="w-48 h-48 relative rounded-full overflow-hidden">
-              <Image
-                src={me}
-                alt="me"
-                layout="fill"
-                objectFit="cover"
-                priority
+        <div className="flex flex-col md:flex-row justify-between space-y-12 md:space-y-0 md:space-x-12 items-center">
+          <div className="w-full md:w-3/5">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <Input
+                type="text"
+                name="name"
+                label="Nombre"
+                placeholder="Tu nombre"
+                value={formData.name}
+                onChange={handleChange}
+                required
               />
-            </div>
-            <h3 className="text-2xl font-semibold text-white">Josue Ricardo Ruiz Rosas</h3>
+              <Input
+                type="email"
+                name="email"
+                label="Email"
+                placeholder="tu@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <Textarea
+                name="message"
+                label="Mensaje"
+                placeholder="Escribe tu mensaje aquí"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                minRows={4}
+              />
+              <div className="flex space-x-4">
+                <Button 
+                  color="primary" 
+                  className="flex-1 h-12"
+                  startContent={<MdEmail size={20} />}
+                  onClick={handleEmailSend}
+                >
+                  Enviar Correo
+                </Button>
+                <Button  
+                  className="flex-1 h-12 text-white bg-[#25D366] "
+                  startContent={<FaWhatsapp size={20} />}
+                  onClick={handleWhatsAppSend}
+                >
+                  Enviar WhatsApp
+                </Button>
+              </div>
+            </form>
+          </div>
+          <div className="w-full md:w-2/5 flex flex-col items-center">
+            <Image
+              src={me}
+              alt="me"
+              width={400} // Ajusta el tamaño de la imagen según sea necesario
+              height={400} // Ajusta el tamaño de la imagen según sea necesario
+              objectFit="cover"
+              priority
+            />
+            <h3 className="text-2xl font-semibold text-white mt-4">Josue Ricardo Ruiz Rosas</h3>
             <p className="text-gray-200">Desarrollador Web</p>
-            <div className="flex justify-center space-x-6">
+            <div className="flex justify-center space-x-6 mt-4">
               <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
                 <FaGithub size={28} />
               </a>
@@ -66,58 +113,6 @@ export default function Contact() {
                 <MdEmail size={28} />
               </a>
             </div>
-          </div>
-          <div className="w-full md:w-3/5">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <Input
-                type="text"
-                name="name"
-                label="Nombre"
-                placeholder="Tu nombre"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="bg-white"
-              />
-              <Input
-                type="email"
-                name="email"
-                label="Email"
-                placeholder="tu@email.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="bg-white"
-              />
-              <Textarea
-                name="message"
-                label="Mensaje"
-                placeholder="Escribe tu mensaje aquí"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                minRows={4}
-                className="bg-white"
-              />
-              <div className="flex space-x-4">
-                <Button 
-                  color="primary" 
-                  className="flex-1 h-12"
-                  startContent={<MdEmail size={20} />}
-                  onClick={handleEmailSend}
-                >
-                  Enviar Correo
-                </Button>
-                <Button 
-                  color="success" 
-                  className="flex-1 h-12"
-                  startContent={<FaWhatsapp size={20} />}
-                  onClick={handleWhatsAppSend}
-                >
-                  Enviar WhatsApp
-                </Button>
-              </div>
-            </form>
           </div>
         </div>
       </div>

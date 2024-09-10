@@ -21,7 +21,7 @@ const TECHNOLOGIES = [
 const Skills = () => {
   return (
     <section id="skills" className="mt-10 py-10 " >
-      <h1 className="text-4xl font-bold mb-12 text-center text-white">Skills</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center text-white">Habilidades</h1>
       <div className="grid grid-cols-3 md:grid-cols-7 gap-8">
         {TECHNOLOGIES.map((tech, index) => (
           <div

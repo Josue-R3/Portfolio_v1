@@ -45,7 +45,7 @@ export default function Projects() {
 
   const filteredData = filter === 'all' ? CARD_DATA : CARD_DATA.filter(card => card.category === filter);
 
-  const handleFlip = (index) => {
+  const handleFlip = (index : any) => {
     setFlippedIndex(flippedIndex === index ? null : index);
   };
 
