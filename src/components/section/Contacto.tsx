@@ -1,10 +1,47 @@
+// components/section/Contact.js
 import { Button, Input, Textarea } from "@nextui-org/react";
 import React, { useState } from "react";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { FaSquareTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram, FaDownload } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import Image from 'next/image';
-import me from "../../../public/images/avatar.png";
+
+// Objeto para las acciones de contacto
+const contactActions = [
+  {
+    title: "Descargar CV",
+    icon: <FaDownload size={20} />,
+    path: "/ruta/al/cv.pdf", // Reemplaza esta ruta con la ruta correcta a tu CV
+    color: "bg-white text-black",
+    hoverColor: "hover:bg-blue-700 hover:text-white "
+  },
+  {
+    title: "Más sobre mis proyectos en GitHub",
+    icon: <FaGithub size={20} />,
+    path: "https://github.com/Josue-R3", // Enlace a tu perfil de GitHub
+    color: "bg-[#333]",
+    hoverColor: "hover:bg-[#111]"
+  },
+  {
+    title: "Búscame en LinkedIn",
+    icon: <FaLinkedin size={20} />,
+    path: "https://www.linkedin.com/in/josue-ruiz-0952001b3/", // Enlace a tu perfil de LinkedIn
+    color: "bg-[#0072b1]",
+    hoverColor: "hover:bg-[#005983]"
+  },
+  {
+    title: "Más sobre mí en Instagram",
+    icon: <FaInstagram size={20} />,
+    path: "https://www.instagram.com/tuusuario", // Reemplaza con tu enlace de Instagram
+    color: "bg-[#E1306C]",
+    hoverColor: "hover:bg-[#B62055]"
+  },
+  {
+    title: "Chatea conmigo por WhatsApp",
+    icon: <FaWhatsapp size={20} />,
+    path: "https://wa.me/tu-numero", // Reemplaza 'tu-numero' con tu número de WhatsApp
+    color: "bg-[#25D366]",
+    hoverColor: "hover:bg-[#1da851]"
+  },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,7 +50,7 @@ export default function Contact() {
     message: ""
   });
 
-  const handleChange = (e : any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
@@ -21,7 +58,7 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e : any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("Formulario enviado:", formData);
     setFormData({ name: "", email: "", message: "" });
@@ -31,17 +68,14 @@ export default function Contact() {
     console.log("Enviando email con:", formData);
   };
 
-  const handleWhatsAppSend = () => {
-    console.log("Enviando WhatsApp con:", formData);
-  };
-
   return (
     <section id="contact" className="py-12">
       <div className="container mx-auto px-6 max-w-5xl">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">Contáctame</h2>
-        <div className="flex flex-col md:flex-row justify-between space-y-12 md:space-y-0 md:space-x-12 items-center">
-          <div className="w-full md:w-3/5">
-            <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:space-x-8 space-y-6 md:space-y-0">
+          {/* Formulario de Contacto a la izquierda */}
+          <div className="w-full md:w-3/5 flex flex-col items-center">
+            <form onSubmit={handleSubmit} className="space-y-6 w-full">
               <Input
                 type="text"
                 name="name"
@@ -78,41 +112,22 @@ export default function Contact() {
                 >
                   Enviar Correo
                 </Button>
-                <Button  
-                  className="flex-1 h-12 text-white bg-[#25D366] "
-                  startContent={<FaWhatsapp size={20} />}
-                  onClick={handleWhatsAppSend}
-                >
-                  Enviar WhatsApp
-                </Button>
               </div>
             </form>
           </div>
-          <div className="w-full md:w-2/5 flex flex-col items-center">
-            <Image
-              src={me}
-              alt="me"
-              width={400} // Ajusta el tamaño de la imagen según sea necesario
-              height={400} // Ajusta el tamaño de la imagen según sea necesario
-              objectFit="cover"
-              priority
-            />
-            <h3 className="text-2xl font-semibold text-white mt-4">Josue Ricardo Ruiz Rosas</h3>
-            <p className="text-gray-200">Desarrollador Web</p>
-            <div className="flex justify-center space-x-6 mt-4">
-              <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
-                <FaGithub size={28} />
-              </a>
-              <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
-                <FaLinkedin size={28} />
-              </a>
-              <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
-                <FaSquareTwitter size={28} />
-              </a>
-              <a href="mailto:tu@email.com" className="text-white hover:text-blue-200">
-                <MdEmail size={28} />
-              </a>
-            </div>
+
+          {/* Botones de acciones de contacto a la derecha */}
+          <div className="w-full md:w-2/5 flex flex-col items-stretch space-y-4">
+            {contactActions.map((action, index) => (
+              <Button 
+                key={index}
+                className={`flex items-center justify-start h-12 text-white ${action.color} ${action.hoverColor} pl-4`}
+                startContent={action.icon}
+                onClick={() => window.open(action.path, '_blank')}
+              >
+                {action.title}
+              </Button>
+            ))}
           </div>
         </div>
       </div>
