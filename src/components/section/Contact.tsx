@@ -104,7 +104,8 @@ export default function Contact() {
                 minRows={4}
               />
               <div className="flex space-x-4">
-                <Button 
+                <Button
+                isDisabled 
                   color="primary" 
                   className="flex-1 h-12"
                   startContent={<MdEmail size={20} />}
