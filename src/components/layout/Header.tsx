@@ -149,7 +149,7 @@ export default function Header() {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-background flex items-center justify-between container mx-auto px-6 md:px-0 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background flex items-center justify-between container mx-auto px-6 md:px-0 py-4">
       {/* Renderiza el logo */}
       <div className="flex items-center">{renderLogo()}</div>
 
