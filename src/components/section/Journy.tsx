@@ -60,14 +60,14 @@ const Timeline = ({ title, items }: { title: string, items: any[] }) => (
   </div>
 );
 
-export default function Trayectoria() {
+export default function Journy() {
   // Filtra los datos por categoría
   const experience = data.filter(item => item.category === 'experience');
   const education = data.filter(item => item.category === 'education');
   const certifications = data.filter(item => item.category === 'certification');
 
   return (
-    <section id='education' className="max-w-full mx-auto p-4">
+    <section id='journy' className="max-w-full mx-auto p-4">
       <h1 className="text-4xl font-bold mb-12 text-center text-white">Trayectoria</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8">
         <Timeline title="Experiencia" items={experience} />

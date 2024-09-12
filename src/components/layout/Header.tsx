@@ -9,7 +9,7 @@ import logoMobile from '../../../public/images/logo.png';
 const navLinks = [
   { title: "Habilidades", path: "skills" },
   { title: "Proyectos", path: "projects" },
-  { title: "Trayectoria", path: "education" },
+  { title: "Trayectoria", path: "journy" },
   { title: "Contacto", path: "contact" },
 ];
 

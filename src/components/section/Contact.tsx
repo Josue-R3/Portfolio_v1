@@ -9,38 +9,38 @@ const contactActions = [
   {
     title: "Descargar CV",
     icon: <FaDownload size={20} />,
-    path: "/ruta/al/cv.pdf", // Reemplaza esta ruta con la ruta correcta a tu CV
+    path: "https://drive.google.com/file/d/1i524hjOd6LYruf3q2e6Fh1BQX4bqoVQN/view?usp=sharing", // Reemplaza esta ruta con la ruta correcta a tu CV
     color: "bg-white text-black",
-    hoverColor: "hover:bg-blue-700 hover:text-white "
+    hoverColor: "hover:bg-blue-700 hover:text-white hover:font-semibold "
   },
   {
     title: "Más sobre mis proyectos en GitHub",
     icon: <FaGithub size={20} />,
     path: "https://github.com/Josue-R3", // Enlace a tu perfil de GitHub
     color: "bg-[#333]",
-    hoverColor: "hover:bg-[#111]"
+    hoverColor: "hover:bg-[#111] hover:font-semibold"
   },
   {
     title: "Búscame en LinkedIn",
     icon: <FaLinkedin size={20} />,
     path: "https://www.linkedin.com/in/josue-ruiz-0952001b3/", // Enlace a tu perfil de LinkedIn
     color: "bg-[#0072b1]",
-    hoverColor: "hover:bg-[#005983]"
+    hoverColor: "hover:bg-[#005983] hover:font-semibold "
   },
   {
     title: "Más sobre mí en Instagram",
     icon: <FaInstagram size={20} />,
-    path: "https://www.instagram.com/tuusuario", // Reemplaza con tu enlace de Instagram
+    path: "https://www.instagram.com/josue_r3/", // Reemplaza con tu enlace de Instagram
     color: "bg-[#E1306C]",
-    hoverColor: "hover:bg-[#B62055]"
+    hoverColor: "hover:bg-[#B62055] hover:font-semibold "
   },
-  {
+  /*{
     title: "Chatea conmigo por WhatsApp",
     icon: <FaWhatsapp size={20} />,
-    path: "https://wa.me/tu-numero", // Reemplaza 'tu-numero' con tu número de WhatsApp
+    path: "", // Reemplaza 'tu-numero' con tu número de WhatsApp
     color: "bg-[#25D366]",
-    hoverColor: "hover:bg-[#1da851]"
-  },
+    hoverColor: "hover:bg-[#1da851] hover:font-semibold "
+  },*/
 ];
 
 export default function Contact() {
